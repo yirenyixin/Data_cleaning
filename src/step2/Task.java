@@ -17,9 +17,11 @@ public class Task {
         /**********   Begin   **********/
         List<Hotel> hotels = new ArrayList<>();
         JSONObject jsonObject = JSON.parseObject(hotelResult);
-        List<Hotel> hotelList = JSON.parseArray(jsonObject.getString("hotelPositionJSON"), Hotel.class);
-        JSONArray priceList = jsonObject.getJSONArray("htllist");
-
+        System.out.println(jsonObject);
+        List<Hotel> hotelList = JSON.parseArray(jsonObject.getString("hotelPositionJSON"), Hotel.class);//hotelPositionJSON属性解析为一个Hotel类型的List集合
+        System.out.println(hotelList);
+        JSONArray priceList = jsonObject.getJSONArray("htllist");//获取名为htllist的JSON数组
+        System.out.println(priceList);
         for (int i = 0; i < hotelList.size(); i++) {
             Hotel hotel = hotelList.get(i);
             String hotelId = hotel.getId();
@@ -53,7 +55,7 @@ public class Task {
             byte[] b=new byte[1024];
             int len=0;
             try {
-                while((len=is.read(b))!=-1){
+                while((len=is.read(b))!=-1){//逐个读取文件中的字节，最终将所有读取的字节拼接成一个字符串
                     String str=new String(b,0,len);
                     hotelResult+=str;
                 }

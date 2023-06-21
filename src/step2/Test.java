@@ -13,7 +13,7 @@ public class Test {
         String hotelResult = task.getHotelListString("1", sc.next());
         List<Hotel> hotle = task.getHotle(hotelResult);
         System.out.println("北京市酒店个数："+hotle.size());
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < hotle.size(); i++) {
             System.out.println(hotle.get(i));
         }
     }
